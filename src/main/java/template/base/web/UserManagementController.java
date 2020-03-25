@@ -51,7 +51,7 @@ public class UserManagementController {
 //        }
 //        return ResponseEntity.ok().body(Boolean.TRUE);
 //    }
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('User_READ')")
     @GetMapping("users")
     @ApiOperation("get All User")
     public ResponseEntity<List<UserGlobalDTO>> getAllUsers() {
@@ -60,7 +60,7 @@ public class UserManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('User_READ')")
     @GetMapping("users/{id}")
     @ApiOperation("get Users")
     public ResponseEntity<UserDetailDTO> getDetailUser(@PathVariable Long id) {
@@ -69,7 +69,7 @@ public class UserManagementController {
                 .body(result.get());
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('User_CREATE')")
     @PostMapping("/users")
     @ApiOperation("Add User")
     public ResponseEntity<Boolean> addUser(@Valid @RequestBody UserGlobalDTO userGlobalDTO) throws Exception {
@@ -78,7 +78,7 @@ public class UserManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('User_UPDATE')")
     @PutMapping("/users")
     @ApiOperation("Update User")
     public ResponseEntity<Boolean> updateUser(@Valid @RequestBody UserGlobalDTO userGlobalDTO) throws Exception {
@@ -87,7 +87,7 @@ public class UserManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('User_DELETE')")
     @PostMapping("/delete-user")
     @ApiOperation("Delete User")
     public ResponseEntity<Boolean> reqDelete(@RequestBody Integer[] userId){

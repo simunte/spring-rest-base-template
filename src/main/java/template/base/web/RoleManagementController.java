@@ -29,7 +29,7 @@ public class RoleManagementController {
         this.roleService = roleService;
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('Role_CREATE')")
     @PostMapping("/role")
     @ApiOperation("Add Role and Assign Privelege")
     public ResponseEntity<Boolean> addRole(@Valid @RequestBody RoleDetailDTO roleDetailDTO) throws URISyntaxException{
@@ -38,7 +38,7 @@ public class RoleManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('Role_UPDATE')")
     @PutMapping("/role")
     @ApiOperation("Update Role and Assign Privelege")
     public ResponseEntity<Boolean> updateRole(@Valid @RequestBody RoleDetailDTO roleDetailDTO) throws URISyntaxException{
@@ -47,7 +47,7 @@ public class RoleManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('Role_DELETE')")
     @DeleteMapping("/role")
     @ApiOperation("Delete role")
     public ResponseEntity<Boolean> deleteRole(@RequestBody Integer[] listId) throws URISyntaxException{
@@ -56,7 +56,7 @@ public class RoleManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('Role_READ')")
     @GetMapping("/role/list")
     @ApiOperation("get All Role")
     public ResponseEntity<List<RoleGlobalDTO>> getAllRole(){
@@ -65,7 +65,7 @@ public class RoleManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('Role_READ')")
     @GetMapping("/role/menu")
     @ApiOperation("get All Menu")
     public ResponseEntity<List<MenuDTO>> getAllMenu(){
@@ -74,7 +74,7 @@ public class RoleManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('Role_READ')")
     @GetMapping("/role")
     @ApiOperation("get All Role and Assign Privelege")
     public ResponseEntity<List<RoleDetailDTO>> getAllRoleAndPrivilege(){
@@ -83,7 +83,7 @@ public class RoleManagementController {
                 .body(result);
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("@authorization.checkPrivilege('Role_READ')")
     @GetMapping("/role/{id}")
     @ApiOperation("get All Role and Assign Privilege By Role Id")
     public ResponseEntity<RoleDetailDTO> getAllRoleAndPrivilegeByRoleId(@PathVariable Long id){

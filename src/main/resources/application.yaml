@@ -42,3 +42,7 @@ swagger:
     name: James
     url:
     email: tommimunte@gmail.com
+
+file:
+  path:
+    others: file-management/
