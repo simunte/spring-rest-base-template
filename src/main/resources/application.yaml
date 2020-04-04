@@ -1,10 +1,9 @@
 server:
-  #ssl:
-      #key-alias: 1
-      #key-password: SLj4#TrB5$
-      #key-store: keystore/LXAJOUIDV111.jks
-      #key-store-provider: SUN
-      #key-store-type: JKS
+  ssl:
+      key-alias: baeldung
+      key-password: welcome1
+      key-store: keystore/baeldung.jks
+      key-store-type: JKS
   port: ${SERVER_PORT:8083}
 
 spring:
@@ -12,7 +11,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${MYSQL_HOSTNAME:localhost}:${MYSQL_PORT:3306}/spring_template?useLegacyDatetimeCode=false&serverTimezone=UTC
     username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:welcome1}
+    password: ${MYSQL_PASSWORD:XXX}
   jpa:
     hibernate.ddl-auto: update
     show-sql: false
@@ -46,3 +45,17 @@ swagger:
 file:
   path:
     others: file-management/
+
+mail:
+  host: ${MAIL_HOST}
+  username: ${MAIL_USERNAME}
+  password: ${MAIL_PASSWORD}
+  properties:
+    protocol: smtp
+    port: 587
+    auth: true
+    starttls:
+      enable: true
+      required: true
+
+
